@@ -1,0 +1,7 @@
+/**
+ * @author Subrata
+ */
+
+Meteor.methods({
+
+});

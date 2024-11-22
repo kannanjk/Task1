@@ -1,0 +1,49 @@
+<template name="listCreate">
+  <form class="category-add" id="categoryAdd">
+    <div class="box box-default box-solid">
+      <div class="box-header with-border bg-aqua">
+        <h3 class="box-title">{{category}} Details</h3>
+      </div>
+      <div class="box-body no-padding">
+        <div class="row">
+          <div class="col-md-4 col-sm-12 col-xs-12"> Name <span class="asteric_red">*</span></div>
+          <div class="col-md-8 col-sm-12 col-xs-12">
+            <input type="text" minlength="2" pattern="[^-\s][a-zA-Z0-9_\s-]+$" title="Can't starts the field with space"
+              name="name" placeholder=" Name" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-12 col-xs-12"> place <span class="asteric_red">*</span></div>
+          <div class="col-md-8 col-sm-12 col-xs-12">
+            <input type="text" minlength="2" pattern="[^-\s][a-zA-Z0-9_\s-]+$" title="Can't starts the field with space"
+              name="place" placeholder=" place" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-12 col-xs-12"> contact <span class="asteric_red">*</span></div>
+          <div class="col-md-8 col-sm-12 col-xs-12">
+            <input type="text" minlength="2" pattern="[^-\s][a-zA-Z0-9_\s-]+$" title="Can't starts the field with space"
+              name="contact" placeholder=" contact" required>
+          </div>
+        </div> 
+        <div class="row">
+          <div class="col-md-4 col-sm-12 col-xs-12"> id <span class="asteric_red">*</span></div>
+          <div class="col-md-8 col-sm-12 col-xs-12">
+            <input type="text" minlength="2" pattern="[^-\s][a-zA-Z0-9_\s-]+$" title="Can't starts the field with space"
+              name="id" placeholder=" id" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-12 col-xs-12">password <span class="asteric_red">*</span></div>
+          <div class="col-md-8 col-sm-12 col-xs-12">
+            <input type="text" minlength="2" pattern="[^-\s][a-zA-Z0-9_\s-]+$" title="Can't starts the field with space"
+              name="password" placeholder=" password" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" name="submit" class="btn btn-primary pull-right">Save {{category}}</button>
+    <button type="button" class="btn btn-default closeCategory" data-dismiss="modal">Close</button>
+  </form>
+
+</template>

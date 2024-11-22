@@ -1,0 +1,87 @@
+<template name="role_create">
+  <form class="role-add" id="roleAdd">
+      <div class="box box-default box-solid">
+          <div class="box-header with-border bg-aqua">
+            <h3 class="box-title">{{category}} Details</h3>
+          </div>
+          <div class="box-body no-padding">
+            <div class="row">
+              <div class="col-md-4 col-sm-12 col-xs-12">{{role}} Name  <span class="asteric_red">*</span></div>
+              <div class="col-md-8 col-sm-12 col-xs-12"><input type="text" id="roleName" minlength="2" pattern="[^-\s][a-zA-Z0-9_\s-]+$" title="Can't starts the field with space" name="name" placeholder="{{role}} Name" required>
+                <br><span id="roleNamespans"></span></div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 col-sm-12 col-xs-12">Description <span class="asteric_red">*</span></div>
+              <div class="col-md-8 col-sm-12 col-xs-12"><textarea name="description" class="createTextarea" title="Enter the {{role}} details"
+                placeholder="{{role}} description"></textarea></div>
+            </div>
+            <div class="row">
+                <div class="bg-darkblue-head ">Permissions</div>
+          <div class="box-body no-padding table-responsive">
+         
+                <table  class="table table-striped " >
+                  <tbody>
+                   
+                     <tr >
+                        <td class="bg-darkblue">Modules </td>
+                        <td class="bg-darkblue">Select All </td>
+                        <td class="bg-darkblue">View </td>
+                        <td class="bg-darkblue">Create</td>
+                        <td class="bg-darkblue">Update </td>
+                        <td class="bg-darkblue">Delete </td>
+                       </tr>
+                     <tr>
+                        <td>Users </td>
+                        <td><input  type="checkbox" id="userscheck"> </td>
+          
+                        <td><input type="checkbox" id="userschecking" class="userSelections" name="user_view"> </td>
+                        <td><input type="checkbox" id="userscheckin"  class="userSelections" name="user_create"></td>
+                        <td><input type="checkbox" id="userschecki"  class="userSelections" name="user_update"> </td>
+                        <td><input type="checkbox" id="userscheckings"  class="userSelections" name="user_delete"> </td>
+                       </tr>
+                       <tr>
+                          <td>Item Category </td>
+                          <td><input type="checkbox" id="itemCategorycheck"> </td>
+          
+                          <td><input type="checkbox" id="itemCategorychecking" class="itemCategorySelections" name="itemCategory_view"> </td>
+                          <td><input type="checkbox" id="itemCategorycheckin" class="itemCategorySelections" name="itemCategory_create"></td>
+                          <td><input type="checkbox" id="itemCategorychecki" class="itemCategorySelections" name="itemCategory_update"> </td>
+                          <td><input type="checkbox" id="itemCategorycheckings" class="itemCategorySelections" name="itemCategory_delete"> </td>
+                         </tr>
+                         <tr>
+                            <td>Role </td>
+                            <td><input type="checkbox" id="rolecheck"> </td>
+          
+                            <td><input type="checkbox" id="rolechecking" class="roleSelections" name="role_view"> </td>
+                            <td><input type="checkbox" id="rolecheckin" class="roleSelections" name="role_create"></td>
+                            <td><input type="checkbox" id="rolechecki" class="roleSelections" name="role_update"> </td>
+                            <td><input type="checkbox" id="rolecheckings" class="roleSelections"  name="role_delete"> </td>
+                           </tr>
+                           <tr>
+                              <td>Attendance </td>
+                              <td><input type="checkbox" id="attendancecheck"> </td>
+                              <td><input type="checkbox"  id="attendancechecking" class="attendanceSelections" name="attendance_view"> </td>
+                              <td><input type="checkbox" id="attendancecheckin"  class="attendanceSelections" name="attendance_create"></td>                    
+                             </tr>
+                             <tr>
+                              <td>Zone </td>
+                              <td><input type="checkbox" id="zonecheck"> </td>
+            
+                              <td><input type="checkbox" id="zonechecking" class="zoneSelections" name="zone_view"> </td>
+                              <td><input type="checkbox" id="zonecheckin" class="zoneSelections" name="zone_create"></td>
+                              <td><input type="checkbox" id="zonechecki" class="zoneSelections" name="zone_update"> </td>
+                              <td><input type="checkbox" id="zonecheckings" class="zoneSelections"  name="zone_delete"> </td>
+                             </tr>
+                      </tbody>
+                      </table>
+                    </div>
+            </div>
+          </div>
+        </div>
+    
+    <button type="submit" id="roleSubmit" name="submit" class="btn btn-primary pull-right">Save {{role}}</button>
+    <button type="button" class="btn btn-default closeRole " data-dismiss="modal">Close</button>
+  </form>
+
+</template>
+

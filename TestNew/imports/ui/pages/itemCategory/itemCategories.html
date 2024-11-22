@@ -1,0 +1,167 @@
+<template name="itemCategories">
+  {{#if userCan 'itemCategoryView'}}
+  {{#with categoryName}}
+  <section class="content-header">
+    <h1>{{category}}
+      <small>Listing All {{category}}</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+    </ol>
+  </section>
+
+  <section class="content">
+    {{#if userCan 'itemCategoryCreate'}}
+    <div class="row">
+      <div style="float: right;">
+        <button class="btn btn-primary btn-flat" id="ic-create-button">Create new {{category}}</button>
+      </div>
+    </div>
+    {{/if}}
+
+    <div class="row">
+      <div class="box box-default box-solid">
+        <div class="box-header with-border bg-aqua">
+          <h3 class="box-title">{{category}} Filter</h3>
+        </div>
+        <div class="box-body no-padding">
+          <form class="category-filter">
+            <div class="row">
+              <div class="col-md-2 col-xs-12 col-sm-12">Name</div>
+              <div class="col-md-3 col-xs-12 col-sm-12"><input type="text" placeholder="Name" id="name" name="name">
+              </div>
+              <div class="col-md-2 col-xs-12 col-sm-12">Description</div>
+              <div class="col-md-3 col-xs-12 col-sm-12"><input type="text" placeholder="Description" id="description"
+                  name="description"></div>
+            </div>
+            <div class="row" style="float: right">
+              <button type="submit" name="filter" class="btn btn-primary">Filter</button>
+              <button type="button" name="reset" class="btn btn-info reset">Reset Filter</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="box box-default box-solid">
+        <div class="box-header with-border bg-aqua">
+          <h3 class="box-title">Current {{category}}</h3>
+        </div>
+        {{#if isReady}}
+        <div class="box-body no-padding table-responsive">
+          <table class="table table-striped generic">
+            <tbody>
+              <tr>
+                <th class="text-center sorted-column" id="name" style="width: 200px;">{{category}} Name</th>
+                <th class="text-center sorted-column hidden-xs hidden-sm" id="description">Description</th>
+                <th class="text-center">#Items</th>
+                {{#if userCan 'itemCategoryDelete'}}
+                <th class="text-center">Delete</th> 
+                {{/if}}
+              </tr>
+              {{#each categories}}
+              <tr>
+                <td class="pl-20" width="25%">
+                  <div class="editable-input">
+                    {{#if userCan 'itemCategoryUpdate'}}
+                    {{> editableText options=optionsHelper field="name"}}
+                    {{else}}
+                    {{name}}
+                    {{/if}}
+                  </div>
+                </td>
+                <td class="pl-20 hidden-xs hidden-sm" width="45%">
+                  <div class="editable-textarea">
+                    {{#if userCan 'itemCategoryUpdate'}}
+                    {{> editableText options=optionsHelperWithTextArea field="description"}}
+                    {{else}}
+                    {{description}}
+                    {{/if}}
+                  </div>
+                </td>
+                <td class="text-center" width="15%">{{totalItems uuid}}</td>
+                {{#if userCan 'itemCategoryDelete'}}
+                <td class="text-center" width="15%">
+                  <input type="hidden" id="name_{{uuid}}" value="{{name}}">
+                  <a href="javascript:void(0)" class="remove danger-color" title="Click to remove {{name}}"
+                    id="{{uuid}}">
+                    <i class="fa fa-close"></i>
+                  </a>
+                </td>
+                {{/if}}
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        {{sortIcon}}
+        {{else}}
+        <div class="overlay">
+          <i class="fa fa-refresh fa-spin"></i>
+        </div>
+        {{/if}}
+      </div>
+      {{#if isReady}}
+      {{> defaultBootstrapPaginator pagination=templatePagination limit=10 containerClass="text-right"
+      onClick=clickEvent}}
+      {{/if}}
+
+    </div>
+
+  </section>
+
+  <div class="ic-create-modal">
+    <div class="modal" id="ic-create">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Create {{category}}</h4>
+          </div>
+          <div class="modal-body">
+            {{> itemCategory_create category=category}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{> successModal id="categorySuccessModal" section=category}}
+  {{> errorModal id="categoryErrorModal" section=category}}
+
+
+  <div class="modal fade in" id="categoryDelConfirmation">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+          <h4 class="modal-title text-bold" id="categoryHeader"></h4>
+        </div>
+        <div class="modal-body">
+          <div id="categoryBody">
+            <p>The {{category}}, '<span id="confCategoryName" class="text-bold"></span>' contains
+              '<span id="categoryTotal" class="text-bold"></span>' {{#with itemName}} {{item}}(s){{/with}}.
+            </p>
+            <p class="danger-color">
+              Are you sure to remove {{category}}- '<span id="categoryNameDup" class="text-bold"></span>' ?
+            </p>
+          </div>
+          <input type="hidden" id="confirmedUuid">
+        </div>
+        <div class="modal-footer">
+          <button id="categoryRemove" class="btn btn-danger">Yes please!</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="categoryClose">Not now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{/with}}
+
+  {{else}}
+  {{> accessDenied}}
+  {{/if}}
+</template>

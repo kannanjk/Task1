@@ -1,0 +1,24 @@
+<template name="attendance_create">
+  <form class="attendance-add" >
+    <div class="box box-default box-solid">
+      <div class="box-header with-border bg-aqua">
+        <h3 class="box-title">{{attendance}} Details</h3>
+      </div>
+      <div class="box-body no-padding">
+        <table class="table table-striped create-category">
+          <tbody>
+          <tr>
+            <td style="width: 250px !important;">{{attendance}} Location <span class="asteric_red">*</span></td>
+            <td style="width: 250px !important;">{{#with location}} <span id="myLocation"></span> {{/with}}</td>
+          </tr>
+          <input type="hidden" id="myNewLocation" name="myNewLocation">
+          <input type="hidden" id="locLat" name="locLat">
+          <input type="hidden" id="locLng" name="locLng">
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <button type="submit" name="submit" class="btn btn-primary pull-right">Register {{attendance}}</button>
+    <button type="button" class="btn btn-default closeAttendance" data-dismiss="modal">Close</button>
+  </form>
+</template>

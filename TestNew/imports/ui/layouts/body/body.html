@@ -1,0 +1,19 @@
+<template name="main">
+  {{#if currentUser}}
+  <div class="wrapper">
+    {{> header}}
+    {{> menu}}
+    <div class="content-wrapper">
+      {{> Template.dynamic template=name}}
+    </div>
+    {{> footer}}
+  </div>
+  {{else}}
+  <div class="wrapper">
+    {{> Template.dynamic template=name}}
+    <div class="login_footer">
+      {{> footer }}
+    </div>
+  </div>
+  {{/if}}
+</template>
