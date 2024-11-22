@@ -12,5 +12,5 @@ Meteor.startup(() => {
 });
 
 Meteor.publish('myLi5st', function () {
-  return myList.find({});
+  return myList.find({isDeleted:false});
 });

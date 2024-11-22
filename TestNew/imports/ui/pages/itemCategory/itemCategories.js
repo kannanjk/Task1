@@ -12,7 +12,7 @@ Template.itemCategories.onCreated(function () {
     sort: { name: 1 },
     perPage: 25
   });
-
+  
   const self = this;
   self.autorun(() => {
   });

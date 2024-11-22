@@ -112,7 +112,7 @@ Meteor.methods({
         isDeleted : false,
     createdBy : Meteor.user().username,
       uuid : Random.id()
-      });
+      }); 
     }
   },
 
@@ -125,7 +125,7 @@ Meteor.methods({
       _id: id.trim()
     });
     if (roles) {  
-      roles.isDeleted = true;
+      roles.isDeleted = true;      
       return Meteor.roles.update({
         _id: roles._id
       }, roles);

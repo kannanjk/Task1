@@ -11,10 +11,16 @@ Meteor.methods({
  */
 
   'list.create': (user) => {
-    try {
-      myList.insert(user);
-    } catch (error) {
-      console.log(error);
+    user.isDeleted = false
+    return myList.insert(user);
+  },
+  'list.delete': (id) => {
+    const user = myList.findOne({ name: id })
+    if (user) {
+      user.isDeleted = true
+      myList.remove({
+        _id: user._id
+      }, user)
     }
   }
 }) 

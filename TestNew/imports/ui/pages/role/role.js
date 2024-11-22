@@ -405,7 +405,7 @@ Template.role_list.events({
     });
 
   },
-  /**
+  /** 
 * TODO: Complete JS doc
 * @param event
 */
@@ -434,7 +434,7 @@ Template.role_list.events({
   },
 
   /**
-   * TODO: Complete JS doc
+   * TODO: Complete JS doc    
    * @param event
    */
   'click #categoryRemove': (event) => {

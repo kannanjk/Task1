@@ -6,7 +6,7 @@ Template.listCreate.events({
     /**
      * TODO: Complete JS doc
      * @param event
-     */
+     */ 
     'submit .category-add': (event) => {
         event.preventDefault();
         const user = {

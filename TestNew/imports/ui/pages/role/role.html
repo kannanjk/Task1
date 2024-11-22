@@ -31,7 +31,8 @@
             <div class="row">
               <div class="col-md-2 col-xs-12 col-sm-12">Name</div>
               <div class="col-md-3 col-xs-12 col-sm-12">
-                <input type="text" placeholder="Name" id="name" name="name"></div>
+                <input type="text" placeholder="Name" id="name" name="name">
+              </div>
               <div class="col-md-2 col-xs-12 col-sm-12">Description</div>
               <div class="col-md-3 col-xs-12 col-sm-12">
                 <input type="text" placeholder="Description" id="description" name="description">
@@ -58,12 +59,13 @@
           <table class="table table-striped generic ">
             <tbody>
               <tr>
-                <th class="text-center sorted-column" id="name" >{{role}} Name</th>
+                <th class="text-center sorted-column" id="name">{{role}} Name</th>
                 <th class="text-center sorted-column hidden-xs hidden-sm" id="description">Description</th>
                 <th class="text-center sorted-column ">#Users</th>
 
                 {{#if userCan 'roleUpdate'}}
-                <th class="text-center">Edit</th>{{/if}}
+                <th class="text-center">Edit</th>
+                {{/if}}
                 {{#if userCan 'roleDelete'}}
                 <th class="text-center">Delete</th>{{/if}}
               </tr>
@@ -87,23 +89,25 @@
                   </div>
                 </td>
                 <td class="text-center" width="15%">{{totalUsers _id}}</td>
-                {{#if userCan 'roleUpdate'}}
+                <!-- {{#if userCan 'roleUpdate'}} -->
                 <td class="text-center">
                   <input type="hidden" id="username_{{_id}}" value="{{name}}">
 
-                  <a href="javascript:void(0)" class=" primary-color ic-edit-button " title="Click to edit {{name}}" id="{{_id}}">
+                  <a href="javascript:void(0)" class=" primary-color ic-edit-button " title="Click to edit {{name}}"
+                    id="{{_id}}">
                     <i class="fa fa-pencil"></i>
                   </a>
                 </td>
-                {{/if}}
-                {{#if userCan 'roleDelete'}}
+                <!-- {{/if}} -->
+                <!-- {{#if userCan 'roleDelete'}} -->
                 <td class="text-center" width="15%">
                   <input type="hidden" id="name_{{_id}}" value="{{name}}">
-                  <a href="javascript:void(0)" class="remove danger-color" title="Click to remove {{name}}" id="{{_id}}">
+                  <a href="javascript:void(0)" class="remove danger-color" title="Click to remove {{name}}"
+                    id="{{_id}}">
                     <i class="fa fa-close"></i>
                   </a>
                 </td>
-                {{/if}}
+                <!-- {{/if}} -->
               </tr>
               {{/each}}
             </tbody>
@@ -138,7 +142,7 @@
             {{> role_create role=Role}}
           </div>
         </div>
-      </div> 
+      </div>
     </div>
   </div>
 
@@ -158,78 +162,88 @@
                   <h3 class="box-title">{{role}} Details</h3>
                 </div>
                 <div class="box-body no-padding">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-12 col-xs-12">{{role}} Name  <span class="asteric_red">*</span></div>
-                        <div class="col-md-8 col-sm-12 col-xs-12"><input type="text" minlength="2" id="roleDetailName" pattern="[^-\s][a-zA-Z0-9_\s-]+$"
-                          title="Can't starts the field with space" name="name" placeholder="{{role}} Name" required>
-                         </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-md-4 col-sm-12 col-xs-12">Description  <span class="asteric_red">*</span></div>
-                          <div class="col-md-8 col-sm-12 col-xs-12"> <textarea name="description" class="createTextarea" id="roleDetailDescription" title="Enter the {{role}} details"
-                            placeholder="{{role}} description"></textarea>
-                           </div>
-                        </div>
-                 <div class="row">
-                  <div class="bg-darkblue-head">Permissions</div>
-
-                <div class="box-body no-padding table-responsive">
-                  <table class="table table-striped ">
-                    <tbody>
-
-                      <tr>
-                        <td class="bg-darkblue">Modules </td>
-                        <td class="bg-darkblue">Select All </td>
-                        <td class="bg-darkblue">View </td>
-                        <td class="bg-darkblue">Create</td>
-                        <td class="bg-darkblue">Update </td>
-                        <td class="bg-darkblue">Delete </td>
-                      </tr>
-                      <tr>
-                        <td>User </td>
-                        <td><input type="checkbox" id="userschecks"> </td>
-
-                        <td><input type="checkbox" id="userscheckView" class="userSelect" name="user_view"> </td>
-                        <td><input type="checkbox" id="userscheckCreate" class="userSelect" name="user_create"></td>
-                        <td><input type="checkbox" id="userscheckUpdate" class="userSelect" name="user_update"> </td>
-                        <td><input type="checkbox" id="userscheckDelete" class="userSelect" name="user_delete"> </td>
-                      </tr>
-                      <tr>
-                        <td>Item Category </td>
-                        <td><input type="checkbox" id="itemCategorychecks"> </td>
-
-                        <td><input type="checkbox" id="itemCategorycheckView" class="itemCategorySelect" name="itemCategory_view"> </td>
-                        <td><input type="checkbox" id="itemCategorycheckCreate" class="itemCategorySelect" name="itemCategory_create"></td>
-                        <td><input type="checkbox" id="itemCategorycheckUpdate" class="itemCategorySelect" name="itemCategory_update"> </td>
-                        <td><input type="checkbox" id="itemCategorycheckDelete" class="itemCategorySelect" name="itemCategory_delete"> </td>
-                      </tr>
-                      <tr>
-                        <td>Role </td>
-                        <td><input type="checkbox" id="rolechecks"> </td>
-
-                        <td><input type="checkbox" id="rolecheckView" class="roleSelect" name="role_view"> </td>
-                        <td><input type="checkbox" id="rolecheckCreate" class="roleSelect" name="role_create"></td>
-                        <td><input type="checkbox" id="rolecheckUpdate" class="roleSelect" name="role_update"> </td>
-                        <td><input type="checkbox" id="rolecheckDelete" class="roleSelect" name="role_delete"> </td>
-                      </tr>
-                      <tr>
-                        <td>Attendance </td>
-                        <td><input type="checkbox" id="attendancechecks"> </td>
-                        <td><input type="checkbox" id="attendancecheckView" class="attendanceSelect" name="attendance_view"> </td>
-                        <td><input type="checkbox" id="attendancecheckCreate" class="attendanceSelect" name="attendance_create"></td>
-                      </tr>
-                      <tr>
-                        <td>Zone </td>
-                        <td><input type="checkbox" id="zonechecks"> </td>
-                        <td><input type="checkbox" id="zonecheckView" class="zoneSelect" name="zone_view"> </td>
-                        <td><input type="checkbox" id="zonecheckCreate" class="zoneSelect" name="zone_create"></td>
-                        <td><input type="checkbox" id="zonecheckUpdate" class="zoneSelect" name="zone_update"> </td>
-                        <td><input type="checkbox" id="zonecheckDelete" class="zoneSelect" name="zone_delete"> </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div class="row">
+                    <div class="col-md-4 col-sm-12 col-xs-12">{{role}} Name <span class="asteric_red">*</span></div>
+                    <div class="col-md-8 col-sm-12 col-xs-12"><input type="text" minlength="2" id="roleDetailName"
+                        pattern="[^-\s][a-zA-Z0-9_\s-]+$" title="Can't starts the field with space" name="name"
+                        placeholder="{{role}} Name" required>
+                    </div>
                   </div>
-                </div>
+                  <div class="row">
+                    <div class="col-md-4 col-sm-12 col-xs-12">Description <span class="asteric_red">*</span></div>
+                    <div class="col-md-8 col-sm-12 col-xs-12"> <textarea name="description" class="createTextarea"
+                        id="roleDetailDescription" title="Enter the {{role}} details"
+                        placeholder="{{role}} description"></textarea>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="bg-darkblue-head">Permissions</div>
+
+                    <div class="box-body no-padding table-responsive">
+                      <table class="table table-striped ">
+                        <tbody>
+
+                          <tr>
+                            <td class="bg-darkblue">Modules </td>
+                            <td class="bg-darkblue">Select All </td>
+                            <td class="bg-darkblue">View </td>
+                            <td class="bg-darkblue">Create</td>
+                            <td class="bg-darkblue">Update </td>
+                            <td class="bg-darkblue">Delete </td>
+                          </tr>
+                          <tr>
+                            <td>User </td>
+                            <td><input type="checkbox" id="userschecks"> </td>
+
+                            <td><input type="checkbox" id="userscheckView" class="userSelect" name="user_view"> </td>
+                            <td><input type="checkbox" id="userscheckCreate" class="userSelect" name="user_create"></td>
+                            <td><input type="checkbox" id="userscheckUpdate" class="userSelect" name="user_update">
+                            </td>
+                            <td><input type="checkbox" id="userscheckDelete" class="userSelect" name="user_delete">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Item Category </td>
+                            <td><input type="checkbox" id="itemCategorychecks"> </td>
+
+                            <td><input type="checkbox" id="itemCategorycheckView" class="itemCategorySelect"
+                                name="itemCategory_view"> </td>
+                            <td><input type="checkbox" id="itemCategorycheckCreate" class="itemCategorySelect"
+                                name="itemCategory_create"></td>
+                            <td><input type="checkbox" id="itemCategorycheckUpdate" class="itemCategorySelect"
+                                name="itemCategory_update"> </td>
+                            <td><input type="checkbox" id="itemCategorycheckDelete" class="itemCategorySelect"
+                                name="itemCategory_delete"> </td>
+                          </tr>
+                          <tr>
+                            <td>Role </td>
+                            <td><input type="checkbox" id="rolechecks"> </td>
+
+                            <td><input type="checkbox" id="rolecheckView" class="roleSelect" name="role_view"> </td>
+                            <td><input type="checkbox" id="rolecheckCreate" class="roleSelect" name="role_create"></td>
+                            <td><input type="checkbox" id="rolecheckUpdate" class="roleSelect" name="role_update"> </td>
+                            <td><input type="checkbox" id="rolecheckDelete" class="roleSelect" name="role_delete"> </td>
+                          </tr>
+                          <tr>
+                            <td>Attendance </td>
+                            <td><input type="checkbox" id="attendancechecks"> </td>
+                            <td><input type="checkbox" id="attendancecheckView" class="attendanceSelect"
+                                name="attendance_view"> </td>
+                            <td><input type="checkbox" id="attendancecheckCreate" class="attendanceSelect"
+                                name="attendance_create"></td>
+                          </tr>
+                          <tr>
+                            <td>Zone </td>
+                            <td><input type="checkbox" id="zonechecks"> </td>
+                            <td><input type="checkbox" id="zonecheckView" class="zoneSelect" name="zone_view"> </td>
+                            <td><input type="checkbox" id="zonecheckCreate" class="zoneSelect" name="zone_create"></td>
+                            <td><input type="checkbox" id="zonecheckUpdate" class="zoneSelect" name="zone_update"> </td>
+                            <td><input type="checkbox" id="zonecheckDelete" class="zoneSelect" name="zone_delete"> </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
               </div>
               <input type="hidden" id="roleDetailId" name="_idRole">
@@ -256,15 +270,15 @@
         </div>
         <div class="modal-body">
           <div id="categoryBody">
-              <p>The {{role}}, '<span id="categoryNameDup" class="text-bold"></span>' contains
-                '<span id="roleTotal" class="text-bold"></span>' User(s).
-              </p>
+            <p>The {{role}}, '<span id="categoryNameDup" class="text-bold"></span>' contains
+              '<span id="roleTotal" class="text-bold"></span>' User(s).
+            </p>
             <p class="danger-color">
               Are you sure to remove {{role}}- '<span id="roleNameDup" class="text-bold"></span>' ?
             </p>
           </div>
           <input type="hidden" id="confirmedUuid">
-         
+
         </div>
         <div class="modal-footer">
           <button id="categoryRemove" class="btn btn-danger">Yes please!</button>
